@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './Layout.module.css';
+import Link from 'next/link';
+import styles from '../styles/Layout.module.css';
 import { 
   FiHome, 
   FiSearch, 
@@ -43,19 +44,15 @@ const Layout: React.FC<LayoutProps> = ({
   const [activeNav, setActiveNav] = React.useState('home');
   const [notificationCount] = React.useState(3);
 
-  const handleNavClick = (itemId: string) => {
-    setActiveNav(itemId);
-  };
-
   return (
     <div className={styles.layout}>
       {showHeader && (
         <header className={styles.header}>
           <div className={styles.headerContent}>
-            <a href="/" className={styles.logo}>
+            <Link href="/" className={styles.logo}>
               <span className={styles.logoIcon}>❤️</span>
               TrueMate
-            </a>
+            </Link>
             
             <div className={styles.navActions}>
               <button className={styles.notificationButton}>
@@ -87,17 +84,16 @@ const Layout: React.FC<LayoutProps> = ({
         <nav className={styles.bottomNavigation}>
           <div className={styles.navItems}>
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.id}
                 href={item.href}
                 className={`${styles.navItem} ${
                   activeNav === item.id ? styles.active : ''
                 }`}
-                onClick={() => handleNavClick(item.id)}
               >
                 <span className={styles.navIcon}>{item.icon}</span>
                 <span className={styles.navLabel}>{item.label}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </nav>

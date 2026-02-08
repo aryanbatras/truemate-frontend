@@ -1,9 +1,8 @@
 .button {
   padding: 12px 24px;
-  border-radius: var(--border-radius-md);
+  border-radius: 0;
   font-weight: 600;
   font-size: 16px;
-  transition: all var(--transition-normal);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -13,6 +12,8 @@
   overflow: hidden;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  border: none;
+  background: none;
 }
 
 .button:disabled {
@@ -21,45 +22,41 @@
 }
 
 .primary {
-  background: var(--gradient-primary);
+  background: var(--primary-red);
   color: var(--text-primary);
   border: 2px solid var(--primary-red);
-  box-shadow: var(--shadow-md);
 }
 
 .primary:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--primary-red-light);
+  background: var(--primary-red-dark);
+  border-color: var(--primary-red-dark);
 }
 
 .primary:active:not(:disabled) {
-  transform: translateY(0);
+  background: var(--primary-red-light);
+  border-color: var(--primary-red-light);
 }
 
 .secondary {
-  background: var(--surface);
+  background: transparent;
   color: var(--text-primary);
-  border: 2px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--text-primary);
 }
 
 .secondary:hover:not(:disabled) {
-  background: var(--surface-light);
-  border-color: var(--primary-red);
-  transform: translateY(-1px);
+  background: var(--text-primary);
+  color: var(--background);
 }
 
 .ghost {
   background: transparent;
-  color: var(--primary-red);
+  color: var(--text-primary);
   border: 2px solid transparent;
 }
 
 .ghost:hover:not(:disabled) {
-  background: var(--primary-red);
-  color: var(--text-primary);
-  transform: translateY(-1px);
+  background: var(--text-primary);
+  color: var(--background);
 }
 
 .small {

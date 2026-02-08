@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import styles from './Button.module.css';
+import styles from '../styles/Button.module.css';
 
 interface ButtonProps {
   children: React.ReactNode;

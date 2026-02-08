@@ -1,0 +1,164 @@
+.focusCardsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .focusCardsContainer {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 2rem;
+  }
+}
+
+.card {
+  position: relative;
+  background: linear-gradient(135deg, #fef2f2 0%, #fce7f3 100%);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  height: 15rem;
+  width: 100%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.1);
+  border: 2px solid transparent;
+}
+
+@media (min-width: 768px) {
+  .card {
+    height: 24rem;
+  }
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.7) 50%, transparent 60%);
+  transform: translateX(-100%) skewX(-25deg);
+  transition: transform 0.8s ease;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  transform: translateX(200%) skewX(-25deg);
+}
+
+.cardBlurred {
+  filter: blur(2px) brightness(0.7);
+  transform: scale(0.95) rotate(-1deg);
+  opacity: 0.7;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.cardImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.1);
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(239, 68, 68, 0.8) 0%, rgba(236, 72, 153, 0.25) 50%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem 1rem;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2;
+}
+
+.cardOverlay::before {
+  content: '❤️';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: scale(0) rotate(-180deg);
+  transition: all 0.3s ease 0.2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: linear-gradient(135deg, #1f1f1f 0%, #2d1b1b 100%);
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2);
+  }
+}
+
+.overlayVisible {
+  opacity: 1;
+}
+
+.overlayVisible::before {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  background: linear-gradient(45deg, #ffffff, #fef3c7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+  transform: translateY(20px);
+  transition: all 0.4s ease 0.1s;
+  position: relative;
+}
+
+.cardTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ffffff, #fef3c7);
+  transition: width 0.4s ease 0.2s;
+}
+
+.overlayVisible .cardTitle {
+  transform: translateY(0);
+}
+
+.overlayVisible .cardTitle::after {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .cardTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10%, 30% { transform: scale(1.1); }
+  20% { transform: scale(0.95); }
+}

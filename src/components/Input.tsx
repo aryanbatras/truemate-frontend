@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Input.module.css';
+import styles from '../styles/Input.module.css';
 import { FiSearch, FiAlertCircle } from 'react-icons/fi';
 
 interface InputProps {
