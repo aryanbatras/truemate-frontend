@@ -1,0 +1,430 @@
+.gifts {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tokenBalance {
+  background: var(--gradient-surface);
+  border-radius: var(--border-radius-xl);
+  padding: 24px;
+  margin-bottom: 32px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.tokenBalance::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.balanceContent {
+  position: relative;
+  z-index: 2;
+}
+
+.balanceLabel {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.balanceAmount {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--primary-red);
+  margin-bottom: 16px;
+  text-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+}
+
+.balanceActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.giftCategories {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  justify-content: center;
+}
+
+.categoryButton {
+  padding: 12px 24px;
+  background: var(--surface);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.categoryButton:hover {
+  background: var(--surface-light);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.categoryButton.active {
+  background: var(--gradient-primary);
+  color: var(--text-primary);
+  border-color: var(--primary-red);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.categoryIcon {
+  font-size: 18px;
+}
+
+.giftsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.giftCard {
+  background: var(--surface);
+  border-radius: var(--border-radius-xl);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.giftCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.giftCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-red);
+}
+
+.giftCard:hover::before {
+  opacity: 0.1;
+}
+
+.giftCard.selected {
+  border-color: var(--primary-red);
+  background: var(--surface-light);
+  transform: scale(1.05);
+}
+
+.giftContent {
+  position: relative;
+  z-index: 2;
+}
+
+.giftIcon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  display: inline-block;
+  transition: all var(--transition-normal);
+  animation: float 3s ease-in-out infinite;
+}
+
+.giftCard:hover .giftIcon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.giftName {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.giftPrice {
+  font-size: 16px;
+  color: var(--primary-red);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.giftDescription {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.popularBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--primary-red);
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 3;
+}
+
+.sendSection {
+  background: var(--surface);
+  border-radius: var(--border-radius-xl);
+  padding: 32px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 32px;
+}
+
+.sendTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.recipientSelector {
+  margin-bottom: 24px;
+}
+
+.recipientGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.recipientItem {
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.recipientAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-color);
+  margin-bottom: 8px;
+  transition: all var(--transition-fast);
+}
+
+.recipientItem:hover .recipientAvatar {
+  border-color: var(--primary-red);
+  transform: scale(1.1);
+}
+
+.recipientItem.selected .recipientAvatar {
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
+}
+
+.recipientName {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.selectedGift {
+  background: var(--surface-light);
+  border-radius: var(--border-radius-lg);
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: center;
+  border: 2px solid var(--primary-red);
+}
+
+.selectedGiftIcon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.selectedGiftName {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.selectedGiftPrice {
+  font-size: 16px;
+  color: var(--primary-red);
+  font-weight: 600;
+}
+
+.sendActions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.historySection {
+  background: var(--surface);
+  border-radius: var(--border-radius-xl);
+  padding: 32px;
+  border: 1px solid var(--border-color);
+}
+
+.historyTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.historyItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--background);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.historyItem:hover {
+  background: var(--surface-light);
+  transform: translateX(4px);
+}
+
+.historyGiftIcon {
+  font-size: 32px;
+}
+
+.historyInfo {
+  flex: 1;
+}
+
+.historyGiftName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.historyRecipient {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.historyDate {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.historyPrice {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-red);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--surface);
+  border-radius: var(--border-radius-xl);
+  border: 1px solid var(--border-color);
+}
+
+.emptyIcon {
+  font-size: 64px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.emptyTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.emptyDescription {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .giftsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+  }
+  
+  .giftCard {
+    padding: 16px;
+  }
+  
+  .giftIcon {
+    font-size: 48px;
+  }
+  
+  .balanceAmount {
+    font-size: 36px;
+  }
+  
+  .sendSection {
+    padding: 20px;
+  }
+  
+  .recipientGrid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 12px;
+  }
+  
+  .recipientAvatar {
+    width: 50px;
+    height: 50px;
+  }
+}

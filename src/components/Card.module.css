@@ -1,0 +1,179 @@
+.card {
+  background: var(--surface);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-red);
+}
+
+.cardHeader {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cardBody {
+  padding: 20px;
+}
+
+.cardFooter {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  background: var(--surface-light);
+}
+
+.profileCard {
+  cursor: pointer;
+  position: relative;
+}
+
+.profileCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 1;
+}
+
+.profileCard:hover::before {
+  opacity: 0.1;
+}
+
+.profileImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.profileInfo {
+  padding: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.profileName {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.profileAge {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.profileBio {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.profileActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.actionButton {
+  flex: 1;
+  padding: 8px;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.likeButton {
+  background: var(--success);
+  color: var(--text-primary);
+}
+
+.likeButton:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+.passButton {
+  background: var(--error);
+  color: var(--text-primary);
+}
+
+.passButton:hover {
+  background: #da190b;
+  transform: scale(1.05);
+}
+
+.onlineIndicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  background: var(--success);
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.verifiedBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--primary-red);
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 3;
+}
+
+.giftCard {
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.giftCard:hover {
+  transform: scale(1.05);
+}
+
+.giftIcon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.giftName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.giftPrice {
+  font-size: 14px;
+  color: var(--primary-red);
+  font-weight: 600;
+}

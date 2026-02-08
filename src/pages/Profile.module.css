@@ -1,0 +1,506 @@
+.profile {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profileHeader {
+  background: var(--gradient-surface);
+  border-radius: var(--border-radius-xl);
+  padding: 32px;
+  margin-bottom: 32px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.profileHeader::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.profileContent {
+  position: relative;
+  z-index: 2;
+}
+
+.profileAvatarContainer {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.profileAvatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary-red);
+  box-shadow: var(--shadow-lg);
+}
+
+.editAvatarButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--primary-red);
+  color: var(--text-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 3px solid var(--surface);
+}
+
+.editAvatarButton:hover {
+  background: var(--primary-red-light);
+  transform: scale(1.1);
+}
+
+.profileName {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.profileAge {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.profileBio {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto 24px;
+}
+
+.profileActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.profileStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.statCard {
+  background: var(--surface);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-red);
+}
+
+.statNumber {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary-red);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.statLabel {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.section {
+  background: var(--surface);
+  border-radius: var(--border-radius-xl);
+  padding: 32px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-color);
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionIcon {
+  color: var(--primary-red);
+}
+
+.photoGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.photoItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.photoItem:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.photoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoActions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.photoItem:hover .photoActions {
+  opacity: 1;
+}
+
+.photoActionButton {
+  background: var(--surface);
+  color: var(--text-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+}
+
+.photoActionButton:hover {
+  background: var(--primary-red);
+  transform: scale(1.1);
+}
+
+.mainPhotoBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--primary-red);
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.addPhoto {
+  border: 2px dashed var(--border-color);
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.addPhoto:hover {
+  border-color: var(--primary-red);
+  background: var(--surface-light);
+}
+
+.addPhotoIcon {
+  font-size: 32px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.addPhotoText {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.interestsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.interestTag {
+  background: var(--surface-light);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: var(--border-radius-lg);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.interestTag:hover {
+  background: var(--primary-red);
+  transform: translateY(-2px);
+}
+
+.addInterest {
+  background: transparent;
+  border: 2px dashed var(--border-color);
+  color: var(--text-muted);
+}
+
+.addInterest:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+  background: transparent;
+}
+
+.preferencesForm {
+  display: grid;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.formInput,
+.formSelect {
+  padding: 12px 16px;
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  color: var(--text-primary);
+  font-size: 16px;
+  transition: all var(--transition-fast);
+}
+
+.formInput:focus,
+.formSelect:focus {
+  border-color: var(--primary-red);
+  outline: none;
+}
+
+.formRange {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rangeInput {
+  flex: 1;
+  height: 6px;
+  background: var(--border-color);
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.rangeInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--primary-red);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.rangeInput::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 8px rgba(255, 0, 0, 0.1);
+}
+
+.rangeValue {
+  background: var(--surface-light);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 40px;
+  text-align: center;
+}
+
+.settingsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settingItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.settingItem:last-child {
+  border-bottom: none;
+}
+
+.settingItem:hover {
+  background: var(--surface-light);
+  margin: 0 -16px;
+  padding: 16px;
+  border-radius: var(--border-radius-md);
+}
+
+.settingInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.settingIcon {
+  color: var(--primary-red);
+  font-size: 20px;
+}
+
+.settingDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settingTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.settingDescription {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.settingToggle {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background: var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.settingToggle.active {
+  background: var(--primary-red);
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: var(--text-primary);
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.settingToggle.active .toggleSlider {
+  transform: translateX(24px);
+}
+
+.dangerZone {
+  border: 1px solid var(--error);
+  background: rgba(244, 67, 54, 0.1);
+}
+
+.dangerZone .sectionTitle {
+  color: var(--error);
+}
+
+.dangerZone .sectionIcon {
+  color: var(--error);
+}
+
+@media (max-width: 768px) {
+  .profileHeader {
+    padding: 24px 20px;
+  }
+  
+  .profileAvatar {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profileName {
+    font-size: 24px;
+  }
+  
+  .profileStats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .photoGallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .section {
+    padding: 24px 20px;
+  }
+  
+  .profileActions {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,235 @@
+.layout {
+  min-height: 100vh;
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex: 1;
+  padding-bottom: 80px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(26, 26, 26, 0.95);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  height: 70px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary-red);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  color: var(--primary-red-light);
+}
+
+.logoIcon {
+  font-size: 28px;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notificationButton {
+  position: relative;
+  background: var(--surface-light);
+  color: var(--text-primary);
+  padding: 10px;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+  border: 2px solid transparent;
+}
+
+.notificationButton:hover {
+  background: var(--primary-red);
+  transform: scale(1.1);
+}
+
+.notificationBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--primary-red);
+  color: var(--text-primary);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.bottomNavigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border-color);
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(26, 26, 26, 0.95);
+}
+
+.navItems {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  color: var(--text-muted);
+  position: relative;
+}
+
+.navItem:hover {
+  background: var(--surface-light);
+  color: var(--text-primary);
+}
+
+.navItem.active {
+  color: var(--primary-red);
+}
+
+.navItem.active::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--primary-red);
+  border-radius: 50%;
+}
+
+.navIcon {
+  font-size: 20px;
+  transition: all var(--transition-fast);
+}
+
+.navItem:hover .navIcon {
+  transform: scale(1.1);
+}
+
+.navLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.page {
+  padding: 20px;
+  min-height: calc(100vh - 150px);
+}
+
+.pageHeader {
+  margin-bottom: 24px;
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.pageSubtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.gridCols2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.gridCols3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.gridCols4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.flex {
+  display: flex;
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap2 { gap: 8px; }
+.gap4 { gap: 16px; }
+.gap6 { gap: 24px; }
+.gap8 { gap: 32px; }
+
+.mt2 { margin-top: 8px; }
+.mt4 { margin-top: 16px; }
+.mt6 { margin-top: 24px; }
+.mt8 { margin-top: 32px; }
+
+.mb2 { margin-bottom: 8px; }
+.mb4 { margin-bottom: 16px; }
+.mb6 { margin-bottom: 24px; }
+.mb8 { margin-bottom: 32px; }
