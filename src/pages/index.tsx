@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
     <>
       <Navigation />
       <HeroSection />
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
       <AppleCardsCarouselDemo />
       <div style={{ 
         padding: "5rem 0", 
