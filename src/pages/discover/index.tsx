@@ -1,283 +1,152 @@
 import React from 'react';
 import styles from '../../styles/Discover.module.css';
-import Layout from '../../components/Layout';
+import Navigation from '../../components/Navigation';
 import Button from '../../components/Button';
-import { ProfileCard } from '../../components/Card';
+import { FocusCards } from '../../components/FocusCards';
 import { FiSearch, FiFilter, FiGrid, FiList, FiHeart } from 'react-icons/fi';
+
+interface User {
+  id: number;
+  firstName: string;
+  lastName: string;
+  age: number;
+  gender: string;
+  image: string;
+  address: {
+    city: string;
+    state: string;
+  };
+  company: {
+    title: string;
+  };
+}
+
+interface Card {
+  title: string;
+  src: string;
+}
 
 const DiscoverPage: React.FC = () => {
   const [viewMode, setViewMode] = React.useState<'grid' | 'list' | 'swipe'>('grid');
   const [showFilters, setShowFilters] = React.useState(false);
+  const [users, setUsers] = React.useState<User[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
-  const profiles = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      age: 28,
-      bio: 'Adventure seeker, coffee lover, and dog mom. Looking for someone who can keep up with my spontaneous trips!',
-      image: '/api/placeholder/300/400',
-      interests: ['Travel', 'Photography', 'Cooking'],
-      location: 'New York, NY',
-      online: true,
-      verified: true
-    },
-    {
-      id: 2,
-      name: 'Michael Chen',
-      age: 32,
-      bio: 'Tech enthusiast by day, chef by night. Love exploring new restaurants and hiking trails.',
-      image: '/api/placeholder/300/400',
-      interests: ['Technology', 'Food', 'Hiking'],
-      location: 'San Francisco, CA',
-      online: false,
-      verified: true
-    },
-    {
-      id: 3,
-      name: 'Emma Williams',
-      age: 25,
-      bio: 'Artist and yoga instructor. Seeking meaningful connections and good conversations.',
-      image: '/api/placeholder/300/400',
-      interests: ['Art', 'Yoga', 'Meditation'],
-      location: 'Los Angeles, CA',
-      online: true,
-      verified: false
-    },
-    {
-      id: 4,
-      name: 'David Martinez',
-      age: 30,
-      bio: 'Musician and teacher. Love live concerts, jazz bars, and deep conversations.',
-      image: '/api/placeholder/300/400',
-      interests: ['Music', 'Teaching', 'Reading'],
-      location: 'Austin, TX',
-      online: true,
-      verified: true
-    },
-    {
-      id: 5,
-      name: 'Lisa Anderson',
-      age: 27,
-      bio: 'Fitness coach and nutritionist. Looking for someone who values health and wellness.',
-      image: '/api/placeholder/300/400',
-      interests: ['Fitness', 'Nutrition', 'Wellness'],
-      location: 'Miami, FL',
-      online: false,
-      verified: true
-    },
-    {
-      id: 6,
-      name: 'James Wilson',
-      age: 29,
-      bio: 'Software engineer and gamer. Love coding challenges and weekend adventures.',
-      image: '/api/placeholder/300/400',
-      interests: ['Gaming', 'Coding', 'Movies'],
-      location: 'Seattle, WA',
-      online: true,
-      verified: false
-    }
+  // Unsplash images for diverse profiles (verified working URLs)
+  const unsplashImages = [
+    'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1517841905240-472488bdf63e?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=600&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1494790108755-2616b332c2ca?w=400&h=600&fit=crop&crop=face'
   ];
 
-  const handleLike = (profileId: number) => {
-    console.log('Liked profile:', profileId);
-  };
-
-  const handlePass = (profileId: number) => {
-    console.log('Passed profile:', profileId);
-  };
-
-  const renderProfileCard = (profile: any) => (
-    <ProfileCard
-      key={profile.id}
-      profile={{
-        id: profile.id.toString(),
-        name: profile.name,
-        age: profile.age,
-        bio: profile.bio,
-        photos: [profile.image],
-        isOnline: profile.online,
-        isVerified: profile.verified
-      }}
-      onLike={() => handleLike(profile.id)}
-      onPass={() => handlePass(profile.id)}
-    />
-  );
-
-  const renderListView = (profile: any) => (
-    <div key={profile.id} className={styles.profileListItem}>
-      <img src={profile.image} alt={profile.name} className={styles.profileListImage} />
-      <div className={styles.profileListInfo}>
-        <div className={styles.profileListHeader}>
-          <h3 className={styles.profileListName}>
-            {profile.name}, {profile.age}
-            {profile.verified && <span className={styles.verifiedBadge}>✓</span>}
-          </h3>
-          <span className={`${styles.onlineIndicator} ${profile.online ? styles.online : ''}`} />
-        </div>
-        <p className={styles.profileListBio}>{profile.bio}</p>
-        <div className={styles.profileListInterests}>
-          {profile.interests.map((interest: string, index: number) => (
-            <span key={index} className={styles.interestTag}>
-              {interest}
-            </span>
-          ))}
-        </div>
-        <div className={styles.profileListActions}>
-          <Button variant="ghost" size="small" onClick={() => handleLike(profile.id)}>
-            <FiHeart /> Like
-          </Button>
-          <Button variant="primary" size="small">
-            View Profile
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderSwipeView = () => {
-    const [currentProfileIndex, setCurrentProfileIndex] = React.useState(0);
-    const currentProfile = profiles[currentProfileIndex];
-
-    const handleSwipeLeft = () => {
-      handlePass(currentProfile.id);
-      setCurrentProfileIndex((prev) => (prev + 1) % profiles.length);
+  React.useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('https://dummyjson.com/users?limit=12');
+        const data = await response.json();
+        
+        // Transform user data to match our format and assign Unsplash images
+        const transformedUsers = data.users.map((user: User, index: number) => ({
+          ...user,
+          image: unsplashImages[index % unsplashImages.length]
+        }));
+        
+        setUsers(transformedUsers);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        // Fallback to some default data if API fails
+        setUsers([
+          {
+            id: 1,
+            firstName: 'Sarah',
+            lastName: 'Johnson',
+            age: 28,
+            gender: 'female',
+            image: unsplashImages[0],
+            address: { city: 'New York', state: 'NY' },
+            company: { title: 'Designer' }
+          },
+          {
+            id: 2,
+            firstName: 'Michael',
+            lastName: 'Chen',
+            age: 32,
+            gender: 'male',
+            image: unsplashImages[1],
+            address: { city: 'San Francisco', state: 'CA' },
+            company: { title: 'Developer' }
+          }
+        ]);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    const handleSwipeRight = () => {
-      handleLike(currentProfile.id);
-      setCurrentProfileIndex((prev) => (prev + 1) % profiles.length);
-    };
+    fetchUsers();
+  }, []);
 
-    if (!currentProfile) return null;
+  // Transform users to cards format for FocusCards
+  const profileCards: Card[] = users.map(user => ({
+    title: `${user.firstName} ${user.lastName}, ${user.age} • ${user.address.city}, ${user.address.state}`,
+    src: user.image
+  }));
 
-    return (
-      <div className={styles.swipeContainer}>
-        <div className={styles.swipeCard}>
-          <ProfileCard
-            profile={{
-              id: currentProfile.id.toString(),
-              name: currentProfile.name,
-              age: currentProfile.age,
-              bio: currentProfile.bio,
-              photos: [currentProfile.image],
-              isOnline: currentProfile.online,
-              isVerified: currentProfile.verified
-            }}
-          />
-          <div className={styles.swipeActions}>
-            <Button
-              variant="secondary"
-              size="large"
-              className={styles.swipeButton}
-              onClick={handleSwipeLeft}
-            >
-              Pass
-            </Button>
-            <Button
-              variant="primary"
-              size="large"
-              className={styles.swipeButton}
-              onClick={handleSwipeRight}
-            >
-              Like
-            </Button>
-          </div>
-        </div>
-        </div>
-    );
+  const handleLike = (index: number) => {
+    console.log('Liked profile:', profileCards[index].title);
+  };
+
+  const handlePass = (index: number) => {
+    console.log('Passed profile:', profileCards[index].title);
   };
 
   return (
-    <Layout title="Discover" subtitle="Find your perfect match">
+    <>
+      <Navigation />
       <div className={styles.discover}>
-        <div className={styles.discoverHeader}>
-          <div className={styles.searchBar}>
-            <FiSearch className={styles.searchIcon} />
-            <input
-              type="text"
-              placeholder="Search profiles..."
-              className={styles.searchInput}
-            />
-            <Button
-              variant="ghost"
-              size="small"
-              onClick={() => setShowFilters(!showFilters)}
-            >
-              <FiFilter />
-            </Button>
+        <div className={styles.heroSection}>
+          <div className={styles.heroBackground}>
+            <div className={styles.hearts}>
+              <span className={`${styles.heart} ${styles.heart1}`}>💕</span>
+              <span className={`${styles.heart} ${styles.heart2}`}>💖</span>
+              <span className={`${styles.heart} ${styles.heart3}`}>💗</span>
+              <span className={`${styles.heart} ${styles.heart4}`}>❤️</span>
+            </div>
           </div>
-
-          <div className={styles.viewModes}>
-            <Button
-              variant={viewMode === 'grid' ? 'primary' : 'ghost'}
-              size="small"
-              onClick={() => setViewMode('grid')}
-            >
-              <FiGrid />
-            </Button>
-            <Button
-              variant={viewMode === 'list' ? 'primary' : 'ghost'}
-              size="small"
-              onClick={() => setViewMode('list')}
-            >
-              <FiList />
-            </Button>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              Discover Your <span className={styles.highlight}>True Love</span>
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Browse through amazing profiles and find your perfect match
+            </p>
           </div>
         </div>
 
-        {showFilters && (
-          <div className={styles.filtersPanel}>
-            <div className={styles.filterSection}>
-              <h4>Age Range</h4>
-              <div className={styles.ageRange}>
-                <input type="number" placeholder="Min" min="18" max="100" />
-                <span>-</span>
-                <input type="number" placeholder="Max" min="18" max="100" />
-              </div>
-            </div>
-
-            <div className={styles.filterSection}>
-              <h4>Distance</h4>
-              <select>
-                <option>Within 5 miles</option>
-                <option>Within 10 miles</option>
-                <option>Within 25 miles</option>
-                <option>Within 50 miles</option>
-                <option>Within 100 miles</option>
-              </select>
-            </div>
-
-            <div className={styles.filterSection}>
-              <h4>Interests</h4>
-              <div className={styles.interestFilters}>
-                {['Travel', 'Music', 'Food', 'Fitness', 'Art', 'Technology', 'Gaming', 'Reading'].map((interest) => (
-                  <label key={interest} className={styles.interestFilter}>
-                    <input type="checkbox" />
-                    <span>{interest}</span>
-                  </label>
-                ))}
-              </div>
+        <div className={styles.contentSection}>
+          <div className={styles.profilesContainer}>
+            <div className={styles.profilesGrid}>
+              {loading ? (
+                <div className={styles.loadingState}>
+                  <div className={styles.loadingSpinner}></div>
+                  <p>Loading amazing profiles...</p>
+                </div>
+              ) : (
+                <FocusCards cards={profileCards} />
+              )}
             </div>
           </div>
-        )}
-
-        <div className={styles.profilesContainer}>
-          {viewMode === 'grid' && (
-            <div className={styles.profilesGrid}>
-              {profiles.map(renderProfileCard)}
-            </div>
-          )}
-
-          {viewMode === 'list' && (
-            <div className={styles.profilesList}>
-              {profiles.map(renderListView)}
-            </div>
-          )}
-
-          {viewMode === 'swipe' && renderSwipeView()}
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

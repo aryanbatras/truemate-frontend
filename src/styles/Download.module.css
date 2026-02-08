@@ -1,0 +1,552 @@
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.julius-sans-one-regular {
+  font-family: "Julius Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.download {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.heroSection {
+  min-height: 70vh;
+  background: linear-gradient(135deg, #000000, #1a0000);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.heart {
+  position: absolute;
+  font-size: 32px;
+  color: var(--primary-red);
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+}
+
+.heart1 {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+.heart2 {
+  top: 20%;
+  right: 15%;
+  animation-delay: 2s;
+}
+.heart3 {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+.heart4 {
+  bottom: 20%;
+  right: 10%;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(15deg);
+  }
+}
+
+.heroContent {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.heroTitle {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  font-family: "Julius Sans One", sans-serif;
+}
+
+.highlight {
+  color: var(--primary-red);
+  position: relative;
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+.heroSubtitle {
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  font-family: "Pacifico", cursive;
+}
+
+.downloadButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.playStoreButton {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--gradient-primary);
+  border: none;
+  padding: 1.5rem 3rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  min-width: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.playStoreButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.playStoreButton:hover::before {
+  left: 100%;
+}
+
+.playStoreButton:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+.playStoreIcon {
+  width: 50px;
+  height: 50px;
+  color: #fff;
+}
+
+.playStoreContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.playStoreText {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 4px;
+  font-family: "Pacifico", cursive;
+}
+
+.playStoreTitle {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 900;
+  font-family: "Julius Sans One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contentSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.sectionTitle {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  text-align: center;
+  font-family: "Julius Sans One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.featuresSection {
+  margin-bottom: 6rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.featureCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-xl);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.featureCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(239, 68, 68, 0.05) 0%,
+    transparent 70%
+  );
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-red);
+}
+
+.featureIcon {
+  font-size: 48px;
+  color: var(--primary-red);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 50%;
+  border: 2px solid rgba(239, 68, 68, 0.3);
+}
+
+.featureTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-family: "Julius Sans One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.featureDescription {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.statsSection {
+  margin-bottom: 6rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-xl);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.statCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(239, 68, 68, 0.1) 0%,
+    transparent 70%
+  );
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-red);
+}
+
+.statNumber {
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 900;
+  color: var(--primary-red);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+  font-family: "Julius Sans One", sans-serif;
+}
+
+.statLabel {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.testimonialsSection {
+  margin-bottom: 6rem;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonialCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-xl);
+  padding: 2rem;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.testimonialCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(239, 68, 68, 0.05) 0%,
+    transparent 70%
+  );
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.testimonialCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-red);
+}
+
+.testimonialRating {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.starIcon {
+  color: #ffd700;
+  font-size: 16px;
+}
+
+.testimonialText {
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.testimonialAuthor {
+  color: var(--primary-red);
+  font-weight: 600;
+  text-align: right;
+  font-family: "Julius Sans One", sans-serif;
+}
+
+.ctaSection {
+  background: linear-gradient(135deg, #000000, #1a0000);
+  border-radius: var(--border-radius-xl);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4rem;
+}
+
+.ctaSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(239, 68, 68, 0.1) 0%,
+    transparent 70%
+  );
+  z-index: -1;
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 2;
+}
+
+.ctaTitle {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-family: "Julius Sans One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ctaDescription {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Pacifico", cursive;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--gradient-primary);
+  color: var(--text-primary);
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all var(--transition-normal);
+  font-family: "Julius Sans One", sans-serif;
+  border: 2px solid var(--primary-red);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  color: var(--text-primary);
+  /* box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4); */
+}
+
+.secondaryButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all var(--transition-normal);
+  font-family: "Julius Sans One", sans-serif;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--primary-red);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 60vh;
+  }
+
+  .contentSection {
+    padding: 2rem 1rem;
+  }
+
+  .downloadButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .featuresGrid,
+  .statsGrid,
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ctaSection {
+    padding: 3rem 1rem;
+  }
+}

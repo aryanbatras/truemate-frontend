@@ -13,24 +13,39 @@ interface CardComponentProps {
   setHovered: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const CardComponent = React.memo(({ card, index, hovered, setHovered }: CardComponentProps) => (
-  <div
-    onMouseEnter={() => setHovered(index)}
-    onMouseLeave={() => setHovered(null)}
-    className={`${styles.card} ${hovered !== null && hovered !== index ? styles.cardBlurred : ''}`}
-  >
-    <img
-      src={card.src}
-      alt={card.title}
-      className={styles.cardImage}
-    />
-    <div className={`${styles.cardOverlay} ${hovered === index ? styles.overlayVisible : ''}`}>
-      <div className={styles.cardTitle}>
-        {card.title}
+const CardComponent = React.memo(({ card, index, hovered, setHovered }: CardComponentProps) => {
+  const [imageError, setImageError] = React.useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setHovered(index)}
+      onMouseLeave={() => setHovered(null)}
+      className={`${styles.card} ${hovered !== null && hovered !== index ? styles.cardBlurred : ''}`}
+    >
+      {imageError ? (
+        <div className={styles.imageFallback}>
+          <div className={styles.fallbackContent}>
+            <span className={styles.fallbackIcon}>👤</span>
+            <span className={styles.fallbackText}>Photo</span>
+          </div>
+        </div>
+      ) : (
+        <img
+          src={card.src}
+          alt={card.title}
+          className={styles.cardImage}
+          onError={() => setImageError(true)}
+          loading="lazy"
+        />
+      )}
+      <div className={`${styles.cardOverlay} ${hovered === index ? styles.overlayVisible : ''}`}>
+        <div className={styles.cardTitle}>
+          {card.title}
+        </div>
       </div>
     </div>
-  </div>
-));
+  );
+});
 
 CardComponent.displayName = "CardComponent";
 

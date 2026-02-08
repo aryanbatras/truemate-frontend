@@ -138,11 +138,73 @@
 
 .heroActions {
   display: flex;
-  gap: 16px;
+  gap: 1.5rem;
+  align-items: center;
   flex-wrap: wrap;
 }
 
+.playStoreButton {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--gradient-primary);
+  border: none;
+  padding: 1.5rem 3rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  min-width: 300px;
+  position: relative;
+  overflow: hidden;
+}
 
+.playStoreButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.playStoreButton:hover::before {
+  left: 100%;
+}
+
+.playStoreButton:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+.playStoreIcon {
+  width: 50px;
+  height: 50px;
+  color: #fff;
+}
+
+.playStoreContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.playStoreText {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 4px;
+  font-family: "Pacifico", cursive;
+}
+
+.playStoreTitle {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 900;
+  font-family: "Julius Sans One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 .phoneShowcase {
   position: relative;

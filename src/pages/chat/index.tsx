@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Chat.module.css';
-import Layout from '../../components/Layout';
+import Navigation from '../../components/Navigation';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { FiSend, FiPaperclip, FiPhone, FiVideo } from 'react-icons/fi';
@@ -68,9 +68,30 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <Layout title="Chat" subtitle="Connect with matches">
+    <>
+      <Navigation />
       <div className={styles.chat}>
-        <div className={styles.chatContainer}>
+        <div className={styles.heroSection}>
+          <div className={styles.heroBackground}>
+            <div className={styles.hearts}>
+              <span className={`${styles.heart} ${styles.heart1}`}>💕</span>
+              <span className={`${styles.heart} ${styles.heart2}`}>💖</span>
+              <span className={`${styles.heart} ${styles.heart3}`}>💗</span>
+              <span className={`${styles.heart} ${styles.heart4}`}>❤️</span>
+            </div>
+          </div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              Connect with <span className={styles.highlight}>Your Matches</span>
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Start meaningful conversations and build real connections
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.contentSection}>
+          <div className={styles.chatContainer}>
           <div className={styles.conversationsList}>
             <div className={styles.conversationsHeader}>
               <h3>Messages</h3>
@@ -172,9 +193,10 @@ const ChatPage: React.FC = () => {
               </div>
             )}
           </div>
+          </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

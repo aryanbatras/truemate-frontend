@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Search.module.css';
-import Layout from '../../components/Layout';
+import Navigation from '../../components/Navigation';
 import Button from '../../components/Button';
 import { Input, SearchInput } from '../../components/Input';
 import { ProfileCard } from '../../components/Card';
@@ -69,8 +69,29 @@ const SearchPage: React.FC = () => {
   };
 
   return (
-    <Layout title="Search" subtitle="Find your perfect match">
+    <>
+      <Navigation />
       <div className={styles.search}>
+        <div className={styles.heroSection}>
+          <div className={styles.heroBackground}>
+            <div className={styles.hearts}>
+              <span className={`${styles.heart} ${styles.heart1}`}>💕</span>
+              <span className={`${styles.heart} ${styles.heart2}`}>💖</span>
+              <span className={`${styles.heart} ${styles.heart3}`}>💗</span>
+              <span className={`${styles.heart} ${styles.heart4}`}>❤️</span>
+            </div>
+          </div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              <span className={styles.highlight}>Search</span> Your Match
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Find your perfect partner with advanced search
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.contentSection}>
         <div className={styles.searchHeader}>
           <div className={styles.searchBar}>
             <SearchInput
@@ -200,8 +221,9 @@ const SearchPage: React.FC = () => {
             </Button>
           </div>
         )}
+        </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

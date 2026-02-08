@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Gifts.module.css';
-import Layout from '../../components/Layout';
+import Navigation from '../../components/Navigation';
 import Button from '../../components/Button';
 import { GiftCard } from '../../components/Card';
 import { FiGift, FiSend, FiHeart, FiStar } from 'react-icons/fi';
@@ -93,8 +93,29 @@ const GiftsPage: React.FC = () => {
   const selectedGiftData = gifts.find(gift => gift.id === selectedGift);
 
   return (
-    <Layout title="Virtual Gifts" subtitle="Send gifts to express your feelings">
+    <>
+      <Navigation />
       <div className={styles.gifts}>
+        <div className={styles.heroSection}>
+          <div className={styles.heroBackground}>
+            <div className={styles.hearts}>
+              <span className={`${styles.heart} ${styles.heart1}`}>💕</span>
+              <span className={`${styles.heart} ${styles.heart2}`}>💖</span>
+              <span className={`${styles.heart} ${styles.heart3}`}>💗</span>
+              <span className={`${styles.heart} ${styles.heart4}`}>❤️</span>
+            </div>
+          </div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              Send <span className={styles.highlight}>Virtual Gifts</span>
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Express your feelings with beautiful virtual gifts
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.contentSection}>
         <div className={styles.tokenBalance}>
           <div className={styles.balanceCard}>
             <FiHeart className={styles.tokenIcon} />
@@ -212,8 +233,9 @@ const GiftsPage: React.FC = () => {
             ))}
           </div>
         </div>
+        </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

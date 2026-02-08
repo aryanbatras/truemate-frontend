@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from '../../styles/About.module.css';
-import Layout from '../../components/Layout';
+import Navigation from '../../components/Navigation';
 import Button from '../../components/Button';
+import { FocusCards } from '../../components/FocusCards';
 import Link from 'next/link';
 import { 
   FiHeart, 
@@ -18,34 +19,28 @@ import {
 const About: React.FC = () => {
   const features = [
     {
-      icon: <FiHeart />,
       title: 'Smart Matching',
-      description: 'Our advanced algorithm connects you with compatible matches based on your preferences, interests, and personality traits.'
+      src: '/man-and-women-sitting-dating-mature-image.png'
     },
     {
-      icon: <FiShield />,
       title: 'Safe & Secure',
-      description: 'Profile verification, photo moderation, and advanced privacy controls keep you safe while dating.'
+      src: '/man-and-women-sitting-in-table.png'
     },
     {
-      icon: <FiMessageCircle />,
       title: 'Real-time Chat',
-      description: 'Instant messaging with typing indicators, read receipts, and rich media support.'
+      src: '/tw-mobile-phones-red-with-hands.png'
     },
     {
-      icon: <FiZap />,
       title: 'Lightning Fast',
-      description: 'Optimized performance ensures smooth experience even on slower connections.'
+      src: '/two-mobiles-two-hands-heart-background.png'
     },
     {
-      icon: <FiAward />,
       title: 'Premium Features',
-      description: 'Virtual gifts, video calls, and exclusive features to enhance your dating experience.'
+      src: '/mobilephone-in-big-and-2-people-around.png'
     },
     {
-      icon: <FiTarget />,
       title: 'Focused Dating',
-      description: 'Designed specifically for meaningful connections, not just swiping.'
+      src: '/many-mobiles-red-theme.png'
     }
   ];
 
@@ -54,33 +49,6 @@ const About: React.FC = () => {
     { number: '50M+', label: 'Matches Made' },
     { number: '100K+', label: 'Daily Connections' },
     { number: '4.8★', label: 'App Rating' }
-  ];
-
-  const team = [
-    {
-      name: 'Alex Chen',
-      role: 'CEO & Founder',
-      bio: 'Passionate about creating meaningful connections through technology.',
-      photo: '/api/placeholder/100/100'
-    },
-    {
-      name: 'Sarah Johnson',
-      role: 'Head of Product',
-      bio: 'Dedicated to making dating apps more user-friendly and effective.',
-      photo: '/api/placeholder/100/100'
-    },
-    {
-      name: 'Michael Davis',
-      role: 'Lead Engineer',
-      bio: 'Building scalable and secure dating technology for everyone.',
-      photo: '/api/placeholder/100/100'
-    },
-    {
-      name: 'Emily Wilson',
-      role: 'Community Manager',
-      bio: 'Ensuring a safe and welcoming environment for all users.',
-      photo: '/api/placeholder/100/100'
-    }
   ];
 
   const values = [
@@ -107,28 +75,34 @@ const About: React.FC = () => {
   ];
 
   return (
-    <Layout title="About TrueMate" showBottomNav={false}>
+    <>
+      <Navigation />
       <div className={styles.about}>
-        <div className={styles.hero}>
-          <h1 className={styles.heroTitle}>Find Your True Love</h1>
-          <p className={styles.heroSubtitle}>
-            TrueMate is more than just a dating app – it's a community dedicated to helping 
-            people find meaningful connections in a safe, modern, and enjoyable environment.
-          </p>
+        <div className={styles.heroSection}>
+          <div className={styles.heroBackground}>
+            <div className={styles.hearts}>
+              <span className={`${styles.heart} ${styles.heart1}`}>💕</span>
+              <span className={`${styles.heart} ${styles.heart2}`}>💖</span>
+              <span className={`${styles.heart} ${styles.heart3}`}>💗</span>
+              <span className={`${styles.heart} ${styles.heart4}`}>❤️</span>
+            </div>
+          </div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              About <span className={styles.highlight}>TrueMate</span>
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Find your perfect match in a safe, modern, and enjoyable environment
+            </p>
+          </div>
         </div>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Why Choose TrueMate?</h2>
-          <div className={styles.featuresGrid}>
-            {features.map((feature, index) => (
-              <div key={index} className={styles.featureCard}>
-                <div className={styles.featureIcon}>{feature.icon}</div>
-                <h3 className={styles.featureTitle}>{feature.title}</h3>
-                <p className={styles.featureDescription}>{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <div className={styles.contentSection}>
+
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Why Choose TrueMate?</h2>
+            <FocusCards cards={features} />
+          </section>
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>By the Numbers</h2>
@@ -157,38 +131,9 @@ const About: React.FC = () => {
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Meet Our Team</h2>
-          <div className={styles.teamGrid}>
-            {team.map((member, index) => (
-              <div key={index} className={styles.teamMember}>
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  className={styles.memberPhoto}
-                />
-                <h3 className={styles.memberName}>{member.name}</h3>
-                <p className={styles.memberRole}>{member.role}</p>
-                <p className={styles.memberBio}>{member.bio}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.cta}>
-          <h2 className={styles.ctaTitle}>Ready to Find Your Perfect Match?</h2>
-          <p className={styles.ctaDescription}>
-            Join millions of users who have already found love through TrueMate. 
-            Your journey to finding true love starts here.
-          </p>
-          <Link href="/discover">
-                <Button size="large">
-                  Get Started Now
-                </Button>
-              </Link>
-        </section>
+        </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Profile.module.css';
-import Layout from '../../components/Layout';
+import Navigation from '../../components/Navigation';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { FiCamera, FiEdit2, FiSettings, FiMapPin, FiCalendar, FiHeart, FiX } from 'react-icons/fi';
@@ -58,8 +58,29 @@ const ProfilePage: React.FC = () => {
   };
 
   return (
-    <Layout title="Profile" subtitle="Manage your profile">
+    <>
+      <Navigation />
       <div className={styles.profile}>
+        <div className={styles.heroSection}>
+          <div className={styles.heroBackground}>
+            <div className={styles.hearts}>
+              <span className={`${styles.heart} ${styles.heart1}`}>💕</span>
+              <span className={`${styles.heart} ${styles.heart2}`}>💖</span>
+              <span className={`${styles.heart} ${styles.heart3}`}>💗</span>
+              <span className={`${styles.heart} ${styles.heart4}`}>❤️</span>
+            </div>
+          </div>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              Your <span className={styles.highlight}>Profile</span>
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Manage your profile and find your perfect match
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.contentSection}>
         <div className={styles.profileHeader}>
           <div className={styles.profileInfo}>
             <div className={styles.avatarSection}>
@@ -359,8 +380,9 @@ const ProfilePage: React.FC = () => {
             </div>
           )}
         </div>
+        </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
