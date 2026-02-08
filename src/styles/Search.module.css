@@ -455,18 +455,6 @@
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
 }
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  background: var(--primary-red);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.rangeInput::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-}
 
 .rangeValue {
   background: var(--surface-light);
