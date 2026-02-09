@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useRef, useEffect } from 'react';
 import AppleCard from './AppleCard';
 import styles from '../styles/AppleCardsCarousel.module.css';
@@ -20,19 +21,30 @@ const AppleCardsCarousel: React.FC<AppleCardsCarouselProps> = ({ items }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(1);
   const trackRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const getVisibleCards = () => {
-    if (typeof window === 'undefined') return 1;
-    const width = window.innerWidth;
-    if (width >= 1280) return 4;
-    if (width >= 1024) return 3;
-    if (width >= 768) return 2;
-    return 1;
-  };
+  useEffect(() => {
+    const getVisibleCards = () => {
+      const width = window.innerWidth;
+      if (width >= 1280) return 4;
+      if (width >= 1024) return 3;
+      if (width >= 768) return 2;
+      return 1;
+    };
+    
+    setVisibleCards(getVisibleCards());
+    
+    const handleResize = () => {
+      setVisibleCards(getVisibleCards());
+    };
 
-  const maxIndex = Math.max(0, items.length - getVisibleCards());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, items.length - visibleCards);
 
   const handlePrev = () => {
     setCurrentIndex(prev => Math.max(0, prev - 1));
@@ -104,7 +116,7 @@ const AppleCardsCarousel: React.FC<AppleCardsCarouselProps> = ({ items }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const newMaxIndex = Math.max(0, items.length - getVisibleCards());
+      const newMaxIndex = Math.max(0, items.length - visibleCards);
       if (currentIndex > newMaxIndex) {
         setCurrentIndex(newMaxIndex);
       }
@@ -112,16 +124,16 @@ const AppleCardsCarousel: React.FC<AppleCardsCarouselProps> = ({ items }) => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [currentIndex, items.length]);
+  }, [currentIndex, items.length, visibleCards]);
 
   useEffect(() => {
     if (trackRef.current) {
-      const translateX = -currentIndex * (100 / getVisibleCards());
+      const translateX = -currentIndex * (100 / visibleCards);
       trackRef.current.style.transform = `translateX(${translateX}%)`;
     }
-  }, [currentIndex]);
+  }, [currentIndex, visibleCards]);
 
-  const totalDots = Math.max(1, items.length - getVisibleCards() + 1);
+  const totalDots = Math.max(1, items.length - visibleCards + 1);
 
   return (
     <>
