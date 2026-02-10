@@ -1,15 +1,25 @@
+import type { NextPage } from 'next';
 import React, { useState, useEffect } from "react";
-import Navigation from "../components/Navigation";
-import HeroSection from "../components/HeroSection";
-import FeaturesSection from "../components/FeaturesSection";
-import StatsSection from "../components/StatsSection";
-import CTASection from "../components/CTASection";
-import AppleCardsCarouselDemo from "../components/AppleCardsCarouselDemo";
-import { InfiniteMovingCards } from "../components/InfiniteMovingCards";
-import Loader from "../components/styled-components/Loader";
+import dynamic from "next/dynamic";
+import Navigation from "../components/layout/Navigation";
+import HeroSection from "../components/landing/HeroSection";
+import FeaturesSection from "../components/landing/FeaturesSection";
+import StatsSection from "../components/landing/StatsSection";
+import CTASection from "../components/landing/CTASection";
+import AppleCardsCarouselDemo from "../components/landing/AppleCardsCarouselDemo";
+import { InfiniteMovingCards } from "../components/landing/InfiniteMovingCards";
+import Loader from "../components/ui/Loader";
+import { useAuth } from "../contexts/AuthContext";
 
-const HomePage: React.FC = () => {
+const AuthModal = dynamic(() => import("../components/auth/AuthModal"), {
+  ssr: false,
+  loading: () => null,
+});
+
+const HomePage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { login, register, isLoading: authLoading, error, clearError } = useAuth();
 
   const loveStories = [
     {
@@ -52,13 +62,37 @@ const HomePage: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleOpenAuthModal = () => {
+    setIsAuthModalOpen(true);
+    clearError();
+  };
+
+  const handleCloseAuthModal = () => {
+    setIsAuthModalOpen(false);
+    clearError();
+  };
+
+  const handleLogin = async (credentials: any) => {
+    await login(credentials);
+    if (!error) {
+      handleCloseAuthModal();
+    }
+  };
+
+  const handleRegister = async (userData: any) => {
+    await register(userData);
+    if (!error) {
+      handleCloseAuthModal();
+    }
+  };
+
   if (isLoading) {
     return <Loader />;
   }
 
   return (
     <>
-      <Navigation />
+      <Navigation onAuthModalOpen={handleOpenAuthModal} />
       <HeroSection />
       {/* <FeaturesSection /> */}
       <AppleCardsCarouselDemo />
@@ -115,6 +149,15 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       <CTASection />
+      
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={handleCloseAuthModal}
+        onLogin={handleLogin}
+        onRegister={handleRegister}
+        isLoading={authLoading}
+        error={error || undefined}
+      />
     </>
   );
 };

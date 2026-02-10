@@ -1,0 +1,257 @@
+.photoUploadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.photoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.photoTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: "Julius Sans One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.uploadButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.errorMessage {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  color: #f87171;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.noPhotos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(239, 68, 68, 0.3);
+  border-radius: 16px;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.noPhotos svg {
+  color: rgba(239, 68, 68, 0.6);
+  margin-bottom: 1rem;
+}
+
+.noPhotos p {
+  color: rgba(248, 180, 180, 0.9);
+  margin-bottom: 0.5rem;
+}
+
+.noPhotosHint {
+  font-size: 0.9rem;
+  color: rgba(248, 180, 180, 0.6);
+}
+
+.photoItem {
+  position: relative;
+  aspect-ratio: 1;
+  /* border-radius: 12px; */
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid black;
+  transition: all 0.3s ease;
+}
+
+.photoItem:hover {
+  transform: scale(1.02);
+  /* border-color: #ef4444; */
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.2);
+}
+
+.photoWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.photoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photoItem:hover .photoOverlay {
+  opacity: 1;
+}
+
+.photoActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+
+.actionButton:hover {
+  background: rgba(239, 68, 68, 0.8);
+  transform: scale(1.1);
+}
+
+.actionButton:first-child:hover {
+  background: rgba(239, 68, 68, 0.8);
+}
+
+.mainPhotoBadge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.verifiedBadge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #ffffff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.photoTips {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.photoTips h4 {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: "Julius Sans One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.photoTips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.photoTips li {
+  color: rgba(248, 180, 180, 0.9);
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.photoTips li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #ef4444;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .photoHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .photoGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .noPhotos {
+    padding: 2rem 1rem;
+  }
+  
+  .photoTips {
+    padding: 1rem;
+  }
+  
+  .actionButton {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .mainPhotoBadge,
+  .verifiedBadge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+  }
+}

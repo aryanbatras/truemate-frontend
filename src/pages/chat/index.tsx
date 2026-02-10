@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '../../styles/Chat.module.css';
-import Navigation from '../../components/Navigation';
-import Button from '../../components/Button';
-import Input from '../../components/Input';
+import styles from '../../styles/pages/chat/Chat.module.css';
+import Navigation from '../../components/layout/Navigation';
+import Button from '../../components/ui/Button';
+import Input from '../../components/ui/Input';
 import { FiSend, FiPaperclip, FiPhone, FiVideo } from 'react-icons/fi';
 
 const ChatPage: React.FC = () => {
@@ -62,7 +62,7 @@ const ChatPage: React.FC = () => {
 
   const handleSendMessage = () => {
     if (message.trim()) {
-      console.log('Sending message:', message);
+      // console.log('Sending message:', message);
       setMessage('');
     }
   };

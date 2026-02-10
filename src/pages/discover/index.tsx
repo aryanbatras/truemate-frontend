@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '../../styles/Discover.module.css';
-import Navigation from '../../components/Navigation';
-import Button from '../../components/Button';
-import { FocusCards } from '../../components/FocusCards';
+import styles from '../../styles/pages/discover/Discover.module.css';
+import Navigation from '../../components/layout/Navigation';
+import Button from '../../components/ui/Button';
+import { FocusCards } from '../../components/landing/FocusCards';
 import { FiSearch, FiFilter, FiGrid, FiList, FiHeart } from 'react-icons/fi';
 
 interface User {
@@ -101,11 +101,11 @@ const DiscoverPage: React.FC = () => {
   }));
 
   const handleLike = (index: number) => {
-    console.log('Liked profile:', profileCards[index].title);
+    // console.log('Liked profile:', profileCards[index].title);
   };
 
   const handlePass = (index: number) => {
-    console.log('Passed profile:', profileCards[index].title);
+    // console.log('Passed profile:', profileCards[index].title);
   };
 
   return (

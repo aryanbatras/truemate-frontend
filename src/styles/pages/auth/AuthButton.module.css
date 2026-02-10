@@ -1,0 +1,65 @@
+.authContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userName {
+  color: rgba(248, 180, 180, 0.9);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profileButton,
+.logoutButton,
+.loginButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profileButton {
+  padding: 0.5rem 1rem;
+}
+
+.logoutButton {
+  padding: 0.5rem 1rem;
+}
+
+.loginButton {
+  padding: 0.75rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .authContainer {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+  
+  .userName {
+    font-size: 0.8rem;
+  }
+  
+  .profileButton,
+  .logoutButton,
+  .loginButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .authContainer {
+    align-items: center;
+    width: 100%;
+  }
+  
+  .userName {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
