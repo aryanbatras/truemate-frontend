@@ -1,9 +1,6 @@
 import React from 'react';
 import styles from '../../styles/pages/search/Search.module.css';
-import Navigation from '../../components/layout/Navigation';
-import Button from '../../components/ui/Button';
-import { Input, SearchInput } from '../../components/ui/Input';
-import { ProfileCard } from '../../components/ui/Card';
+import { Navigation, Button, Input, SearchInput, ProfileCard } from '../../components';
 import { FiSearch, FiFilter, FiMapPin, FiCalendar, FiSliders } from 'react-icons/fi';
 
 const SearchPage: React.FC = () => {
@@ -61,11 +58,9 @@ const SearchPage: React.FC = () => {
   };
 
   const handleLike = (profileId: string) => {
-    // console.log('Liked profile:', profileId);
   };
 
   const handlePass = (profileId: string) => {
-    // console.log('Passed profile:', profileId);
   };
 
   return (

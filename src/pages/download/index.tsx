@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from '../../styles/pages/download/Download.module.css';
-import Navigation from '../../components/layout/Navigation';
-import Button from '../../components/ui/Button';
+import styles from '@/styles/pages/download/Download.module.css';
+import { Navigation, Button } from '@/components';
 import Link from 'next/link';
 import { 
   FiDownload, 

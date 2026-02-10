@@ -1,6 +1,6 @@
 import React from 'react';
-import Navigation from '../../components/layout/Navigation';
-import styles from '../../styles/pages/privacy/Privacy.module.css';
+import { Navigation } from '@/components';
+import styles from '@/styles/pages/privacy/Privacy.module.css';
 
 const PrivacyPage: React.FC = () => {
   return (

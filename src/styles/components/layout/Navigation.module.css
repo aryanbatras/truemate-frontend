@@ -30,6 +30,7 @@
   align-items: center;
   justify-content: space-between;
   height: 70px;
+  overflow-x: scroll;
 }
 
 .logo {
@@ -64,6 +65,8 @@
   display: flex;
   align-items: center;
   gap: 32px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .navLink {

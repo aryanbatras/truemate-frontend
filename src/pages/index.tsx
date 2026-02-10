@@ -1,17 +1,10 @@
 import type { NextPage } from 'next';
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import Navigation from "../components/layout/Navigation";
-import HeroSection from "../components/landing/HeroSection";
-import FeaturesSection from "../components/landing/FeaturesSection";
-import StatsSection from "../components/landing/StatsSection";
-import CTASection from "../components/landing/CTASection";
-import AppleCardsCarouselDemo from "../components/landing/AppleCardsCarouselDemo";
-import { InfiniteMovingCards } from "../components/landing/InfiniteMovingCards";
-import Loader from "../components/ui/Loader";
-import { useAuth } from "../contexts/AuthContext";
+import { Navigation, HeroSection, CTASection, AppleCardsCarouselDemo, InfiniteMovingCards, Loader } from "@/components";
+import { useAuth } from "@/contexts/AuthContext";
 
-const AuthModal = dynamic(() => import("../components/auth/AuthModal"), {
+const AuthModal = dynamic(() => import("@/components/auth/AuthModal"), {
   ssr: false,
   loading: () => null,
 });

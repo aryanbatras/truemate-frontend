@@ -1,8 +1,6 @@
 import React from 'react';
-import styles from '../../styles/pages/gifts/Gifts.module.css';
-import Navigation from '../../components/layout/Navigation';
-import Button from '../../components/ui/Button';
-import { GiftCard } from '../../components/ui/Card';
+import styles from '@/styles/pages/gifts/Gifts.module.css';
+import { Navigation, Button, GiftCard } from '@/components';
 import { FiGift, FiSend, FiHeart, FiStar } from 'react-icons/fi';
 
 const GiftsPage: React.FC = () => {
@@ -78,11 +76,6 @@ const GiftsPage: React.FC = () => {
 
   const handleSendGift = () => {
     if (selectedGift && recipient) {
-      // console.log('Sending gift:', {
-      //   giftId: selectedGift,
-      //   recipient,
-      //   message
-      // });
       setSelectedGift(null);
       setRecipient('');
       setMessage('');

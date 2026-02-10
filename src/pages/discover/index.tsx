@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from '../../styles/pages/discover/Discover.module.css';
-import Navigation from '../../components/layout/Navigation';
-import Button from '../../components/ui/Button';
-import { FocusCards } from '../../components/landing/FocusCards';
+import styles from '@/styles/pages/discover/Discover.module.css';
+import { Navigation, Button, FocusCards } from '@/components';
 import { FiSearch, FiFilter, FiGrid, FiList, FiHeart } from 'react-icons/fi';
+import { User } from '@/lib/auth';
+import { apiService } from '@/lib/api';
 
-interface User {
+interface ExternalUser {
   id: number;
   firstName: string;
   lastName: string;
@@ -29,7 +29,7 @@ interface Card {
 const DiscoverPage: React.FC = () => {
   const [viewMode, setViewMode] = React.useState<'grid' | 'list' | 'swipe'>('grid');
   const [showFilters, setShowFilters] = React.useState(false);
-  const [users, setUsers] = React.useState<User[]>([]);
+  const [users, setUsers] = React.useState<ExternalUser[]>([]);
   const [loading, setLoading] = React.useState(true);
 
   // Unsplash images for diverse profiles (verified working URLs)
@@ -51,11 +51,9 @@ const DiscoverPage: React.FC = () => {
   React.useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('https://dummyjson.com/users?limit=12');
-        const data = await response.json();
+        const data = await apiService.externalGet('https://dummyjson.com/users?limit=12');
         
-        // Transform user data to match our format and assign Unsplash images
-        const transformedUsers = data.users.map((user: User, index: number) => ({
+        const transformedUsers = data.users.map((user: ExternalUser, index: number) => ({
           ...user,
           image: unsplashImages[index % unsplashImages.length]
         }));
@@ -63,7 +61,6 @@ const DiscoverPage: React.FC = () => {
         setUsers(transformedUsers);
       } catch (error) {
         console.error('Error fetching users:', error);
-        // Fallback to some default data if API fails
         setUsers([
           {
             id: 1,
@@ -101,11 +98,9 @@ const DiscoverPage: React.FC = () => {
   }));
 
   const handleLike = (index: number) => {
-    // console.log('Liked profile:', profileCards[index].title);
   };
 
   const handlePass = (index: number) => {
-    // console.log('Passed profile:', profileCards[index].title);
   };
 
   return (

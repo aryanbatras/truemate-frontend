@@ -1,8 +1,6 @@
 import React from 'react';
-import styles from '../../styles/pages/about/About.module.css';
-import Navigation from '../../components/layout/Navigation';
-import Button from '../../components/ui/Button';
-import { FocusCards } from '../../components/landing/FocusCards';
+import styles from '@/styles/pages/about/About.module.css';
+import { Navigation, Button, FocusCards } from '@/components';
 import Link from 'next/link';
 import { 
   FiHeart, 

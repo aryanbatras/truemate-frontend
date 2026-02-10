@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Navigation from '../../components/layout/Navigation';
-import styles from '../../styles/pages/contact/Contact.module.css';
+import { Navigation } from '@/components';
+import styles from '@/styles/pages/contact/Contact.module.css';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
