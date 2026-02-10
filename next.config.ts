@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
     };
     return config;
   },
+  turbopack: {
+    rules: {
+      '*.svg': ['@svgr/webpack'],
+    },
+    resolveAlias: {
+      '@': './src',
+    },
+  },
 };
 
 export default nextConfig;
